@@ -14,5 +14,6 @@
         <!-- Customize your theme here. -->
 
         <item name="android:navigationBarColor">@color/green_700</item>
+        <item name="textInputStyle">@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox</item>
     </style>
 </resources>

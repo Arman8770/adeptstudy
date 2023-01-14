@@ -1,6 +1,5 @@
 package com.ayushapp.adeptstudy
 
-import android.animation.Animator
 import android.annotation.SuppressLint
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -9,13 +8,12 @@ import android.os.Looper
 import android.view.View
 import android.widget.TextView
 import com.airbnb.lottie.LottieAnimationView
-import java.util.Objects
 
-class LoginSuccessfull : AppCompatActivity() {
+class UserLoginSuccessful : AppCompatActivity() {
     @SuppressLint("SetTextI18n")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_login_successfull)
+        setContentView(R.layout.activity_login_user_successful)
         supportActionBar!!.hide()
 
         val rightTick =  findViewById<LottieAnimationView>(R.id.animationRightTick)

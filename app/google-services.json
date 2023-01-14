@@ -1,24 +1,25 @@
 {
   "project_info": {
     "project_number": "1058864067691",
+    "firebase_url": "https://adept-study-default-rtdb.asia-southeast1.firebasedatabase.app",
     "project_id": "adept-study",
     "storage_bucket": "adept-study.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:1058864067691:android:feb76820ef827e32e26d2e",
+        "mobilesdk_app_id": "1:1058864067691:android:4745ba54f8f44e29e26d2e",
         "android_client_info": {
           "package_name": "com.ayushapp.adeptstudy"
         }
       },
       "oauth_client": [
         {
-          "client_id": "1058864067691-027kcusvorangli81hbmr974nff1e9kk.apps.googleusercontent.com",
+          "client_id": "1058864067691-i2g5hh8tgftinmnunml99cb13q5tdqk3.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
             "package_name": "com.ayushapp.adeptstudy",
-            "certificate_hash": "29a994e4c0992ca6e865bb47478ab35872793fc3"
+            "certificate_hash": "faaf0884e890705e291b988fddb1516cae1d4a9e"
           }
         },
         {

@@ -15,7 +15,9 @@ import com.google.android.gms.tasks.Task
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.GoogleAuthProvider
 
+
 class Login : AppCompatActivity() {
+
     private lateinit var auth: FirebaseAuth
     private lateinit var googleSignInClient: GoogleSignInClient
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -65,19 +67,20 @@ class Login : AppCompatActivity() {
     private fun updateUI(account: GoogleSignInAccount) {
         val credential = GoogleAuthProvider.getCredential(account.idToken , null)
         auth.signInWithCredential(credential).addOnCompleteListener {
-            if (it.isSuccessful){
-                val intent : Intent = Intent(this , LoginSuccessfull::class.java)
-                intent.putExtra("email" , account.email)
-                intent.putExtra("name" , account.displayName)
+            if (it.isSuccessful && account.email == "ayush.adeptstudy@gmail.com"){
+                val intent = Intent(this , LoginAdminSuccessful::class.java)
+                intent.putExtra("account",account)
                 startActivity(intent)
-            }else{
-                Toast.makeText(this, it.exception.toString() , Toast.LENGTH_SHORT).show()
 
             }
+            else if (it.isSuccessful && account.email != "ayush.adeptstudy@gmail.com"){
+                val intent = Intent(this , UserLoginSuccessful::class.java)
+                intent.putExtra("account",account)
+            startActivity(intent)
+            }
+            else{
+                Toast.makeText(this, it.exception.toString() , Toast.LENGTH_SHORT).show()
+            }
         }
-
-
-
-
     }
 }
