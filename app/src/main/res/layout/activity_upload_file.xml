@@ -6,38 +6,37 @@
     android:layout_height="match_parent"
     tools:context=".UploadFile">
 
-    <TextView
-        android:id="@+id/imageView4"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+    <ImageView
+        android:id="@+id/browseFile"
+        android:layout_width="150dp"
+        android:layout_height="170dp"
         android:layout_marginTop="24dp"
-        android:text="Browse File"
-        android:textAlignment="center"
-        android:textSize="18dp"
-        android:textStyle="bold"
-        android:textColor="@color/black"
+        android:src="@drawable/ic_cloud_upload"
         android:clickable="true"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        android:drawableTop="@drawable/ic_cloud_upload"/>
+        app:layout_constraintTop_toTopOf="parent">
+
+
+    </ImageView>
+
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/nameFile"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="24dp"
+        android:layout_marginTop="15dp"
         android:layout_marginEnd="24dp"
         android:hint="File Name"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView4">
+        app:layout_constraintTop_toBottomOf="@+id/showFN">
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/fileName"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:inputType="numberDecimal" />
+            android:layout_height="wrap_content" />
 
     </com.google.android.material.textfield.TextInputLayout>
 
@@ -57,13 +56,12 @@
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/chooseFolder"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:inputType="numberDecimal" />
+            android:layout_height="wrap_content" />
 
     </com.google.android.material.textfield.TextInputLayout>
 
     <Button
-        android:id="@+id/uploadProject"
+        android:id="@+id/uploadFile"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="24dp"
@@ -75,13 +73,27 @@
         app:layout_constraintTop_toBottomOf="@+id/choose" />
 
     <ImageView
-        android:id="@+id/cancelProject"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
+        android:id="@+id/cancelFile"
+        android:layout_width="35dp"
+        android:layout_height="35dp"
         android:clickable="true"
-        app:layout_constraintEnd_toEndOf="@+id/imageView4"
-        app:layout_constraintTop_toTopOf="@+id/imageView4"
-        tools:srcCompat="@drawable/ic_cancel" />
+        app:layout_constraintEnd_toEndOf="@+id/browseFile"
+        app:layout_constraintTop_toTopOf="@+id/browseFile"
+        app:srcCompat="@drawable/ic_cancel" />
+
+    <TextView
+        android:id="@+id/showFN"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Browse File"
+        android:textColor="@color/black"
+        android:textStyle="bold"
+        android:textSize="18sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/browseFile" />
+
+
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
