@@ -15,10 +15,8 @@
         android:clickable="true"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
-
-
-    </ImageView>
+        app:layout_constraintTop_toTopOf="parent"
+        android:focusable="true"/>
 
 
     <com.google.android.material.textfield.TextInputLayout
@@ -86,7 +84,6 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Browse File"
-        android:textColor="@color/black"
         android:textStyle="bold"
         android:textSize="18sp"
         app:layout_constraintEnd_toEndOf="parent"

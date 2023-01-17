@@ -1,3 +1,5 @@
+@file:Suppress("DEPRECATION")
+
 package com.ayushapp.adeptstudy
 
 import android.Manifest
@@ -23,6 +25,7 @@ import com.karumi.dexter.listener.PermissionRequest
 import com.karumi.dexter.listener.single.PermissionListener
 
 
+@Suppress("DEPRECATION")
 class UploadFile : AppCompatActivity(), PermissionListener {
 
     private lateinit var browseFile: ImageView
@@ -30,11 +33,12 @@ class UploadFile : AppCompatActivity(), PermissionListener {
     private lateinit var etFileName: EditText
     private lateinit var etFolderLocation: EditText
     private lateinit var btuploadFile: Button
-
     private lateinit var storageReference: StorageReference
     private lateinit var databaseReference: DatabaseReference
 
     private lateinit var filepath:Uri
+    private lateinit var getFL:String
+    private lateinit var getFN:String
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -42,7 +46,6 @@ class UploadFile : AppCompatActivity(), PermissionListener {
 
         //supportActionBar!!.title = "Upload"
         supportActionBar!!.hide()
-
         //find id
         browseFile = findViewById(R.id.browseFile)
         cancelFile = findViewById(R.id.cancelFile)
@@ -51,10 +54,6 @@ class UploadFile : AppCompatActivity(), PermissionListener {
         btuploadFile = findViewById(R.id.uploadFile)
 
         cancelFile.visibility = View.INVISIBLE
-
-        //firebase get storage and database reference
-        storageReference = FirebaseStorage.getInstance().getReference()
-        databaseReference = FirebaseDatabase.getInstance().getReference("mydocuments")
 
         cancelFile.setOnClickListener {
             browseFile.setImageResource(R.drawable.ic_cloud_upload)
@@ -67,6 +66,12 @@ class UploadFile : AppCompatActivity(), PermissionListener {
         }
 
         btuploadFile.setOnClickListener{
+
+            getFL = etFolderLocation.text.toString()
+            getFN = etFileName.text.toString()
+            //firebase get storage and database reference
+            storageReference = FirebaseStorage.getInstance().getReference("Upload/")
+            databaseReference = FirebaseDatabase.getInstance().getReference(getFL+"")
             uploadProcess(filepath)
         }
     }
@@ -75,7 +80,7 @@ class UploadFile : AppCompatActivity(), PermissionListener {
 
     // this method is used to take file from file manager
     private fun browse() {
-        Dexter.withContext(getApplicationContext())
+        Dexter.withContext(applicationContext)
             .withPermission(Manifest.permission.READ_EXTERNAL_STORAGE)
             .withListener(this)
             .check()
@@ -98,6 +103,7 @@ class UploadFile : AppCompatActivity(), PermissionListener {
         p1!!.continuePermissionRequest()
     }
 
+    @Deprecated("Deprecated in Java")
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
         if(requestCode == 101 && resultCode == RESULT_OK){
@@ -107,20 +113,23 @@ class UploadFile : AppCompatActivity(), PermissionListener {
         }
     }
 
-
-
     //this method for upload files on firebase storage
     private fun uploadProcess(filepath: Uri) {
 
-        val pd:ProgressDialog = ProgressDialog(this)
+        val pd = ProgressDialog(this)
         pd.setTitle("File Uploading.....!!!")
         pd.show()
 
-        val childReference:StorageReference = storageReference.child("Upload/"+System.currentTimeMillis()+".pdf")
+        val folderReference:StorageReference = storageReference.child(getFL+"/")
+        val childReference:StorageReference = folderReference.child(getFN+".pdf")
+
+
+
         childReference.putFile(filepath)
             .addOnSuccessListener {
                 childReference.downloadUrl.addOnSuccessListener {
-                    val obj:FileInfoModel = FileInfoModel(etFileName.text.toString(),filepath.toString())
+
+                    val obj = FileInfoModel(getFN,filepath.toString())
                     databaseReference.child(databaseReference.push().key!!).setValue(obj)
 
                     pd.dismiss()
@@ -132,11 +141,8 @@ class UploadFile : AppCompatActivity(), PermissionListener {
                 }
             }
             .addOnProgressListener {
-                val percent: Long = (100*it.bytesTransferred)/it.totalByteCount
-                pd.setMessage("Upload :"+percent.toInt()+"%")
-
-
+                val percent: Long = (100 * it.bytesTransferred) / it.totalByteCount
+                pd.setMessage("Upload :" + percent.toInt() + "%")
             }
-
     }
 }
