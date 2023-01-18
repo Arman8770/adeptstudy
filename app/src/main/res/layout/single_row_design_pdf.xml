@@ -13,7 +13,6 @@
         android:layout_height="80dp"
         android:padding="16dp">
 
-
         <ImageView
             android:id="@+id/imgPdfView"
             android:layout_width="80dp"
@@ -22,7 +21,7 @@
             android:layout_alignParentTop="true"
             android:layout_marginStart="0dp"
             android:layout_marginTop="5dp"
-            android:src="@drawable/folder_fill" />
+            android:src="@drawable/pdf" />
 
         <TextView
             android:id="@+id/pdfName"
@@ -30,11 +29,11 @@
             android:layout_height="wrap_content"
             android:layout_alignParentTop="true"
             android:layout_marginStart="0dp"
-            android:layout_marginTop="7dp"
+            android:layout_marginTop="8dp"
+            android:fontFamily="@font/andika"
             android:layout_toEndOf="@id/imgPdfView"
             android:gravity="center_vertical"
-            android:fontFamily="@font/andika"
-            android:hint="Folder Name"
+            android:hint="PDF Name"
             android:textSize="20sp"
             android:textStyle="bold"/>
 

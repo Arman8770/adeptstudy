@@ -4,7 +4,6 @@ import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ImageView
 import android.widget.RelativeLayout
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
@@ -12,8 +11,8 @@ import androidx.recyclerview.widget.RecyclerView
 class MyAdapter(private val folder:ArrayList<FolderInfoModel>):RecyclerView.Adapter<MyAdapter.MyViewHolder>() {
 
     class MyViewHolder(itemView: View):RecyclerView.ViewHolder(itemView){
-        var relativeTouch = itemView.findViewById<RelativeLayout>(R.id.touchUp)
-        var header = itemView.findViewById<TextView>(R.id.header)
+        var relativeTouch = itemView.findViewById<RelativeLayout>(R.id.pdftouchUp)
+        var header = itemView.findViewById<TextView>(R.id.pdfName)
 
     }
 

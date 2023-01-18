@@ -1,31 +1,36 @@
 package com.ayushapp.adeptstudy
 
 import android.annotation.SuppressLint
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.os.Handler
-import android.os.Looper
 import android.view.View
-import android.widget.TextView
-import com.airbnb.lottie.LottieAnimationView
+import androidx.appcompat.app.AppCompatActivity
+import androidx.navigation.findNavController
+import androidx.navigation.ui.setupWithNavController
+import com.google.android.gms.auth.api.signin.GoogleSignInAccount
+import com.google.android.material.bottomnavigation.BottomNavigationView
 
+
+@Suppress("DEPRECATION")
 class UserLoginSuccessful : AppCompatActivity() {
+
+
     @SuppressLint("SetTextI18n")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login_user_successful)
         supportActionBar!!.hide()
 
-        val rightTick =  findViewById<LottieAnimationView>(R.id.animationRightTick)
-        val btnlogs = findViewById<TextView>(R.id.btnLogSuccess)
-        Handler(Looper.getMainLooper()).postDelayed({
-            rightTick.visibility = View.VISIBLE
-            rightTick.playAnimation()
-        },1000)
+        val account = intent.getParcelableExtra<GoogleSignInAccount>("account")
+        personName = account!!.displayName
+        personEmail = account.email
+        photoURL = account.photoUrl
+        personId = account.id
 
-        rightTick.setOnClickListener{
-            rightTick.playAnimation()
-        }
-        btnlogs.text = "Login Successfully"
+        val bottomNavigationuser = findViewById<BottomNavigationView>(R.id.bottomNavigationViewUser)
+        val fragmentContaineruser = findViewById<View>(R.id.frameLayoutContainerUser)
+        bottomNavigationuser.setupWithNavController(fragmentContaineruser.findNavController())
+
+
+
     }
 }

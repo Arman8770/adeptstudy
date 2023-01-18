@@ -18,6 +18,7 @@ var personEmail:String? = null
 var personId:String? = null
 var photoURL:Uri?=null
 
+@Suppress("DEPRECATION")
 class LoginAdminSuccessful : AppCompatActivity(){
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

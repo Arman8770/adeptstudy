@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".fragments.Notification">
+    tools:context=".Download">
 
     <!-- TODO: Update blank fragment layout -->
     <TextView
@@ -12,7 +12,7 @@
         android:fontFamily="@font/aladin"
         android:paddingStart="24dp"
         android:paddingTop="24dp"
-        android:text="Notification"
+        android:text="Download"
         android:textSize="25sp"
         android:textStyle="bold" />
 

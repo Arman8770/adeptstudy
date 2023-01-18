@@ -41,6 +41,7 @@
         android:src="@drawable/ic_plus"
         app:layout_constraintBottom_toBottomOf="@+id/frameLayoutContainer"
         app:layout_constraintEnd_toEndOf="parent"
-        app:backgroundTint="#D8FFF7"/>
+        app:backgroundTint="#D8FFF7"
+        android:contentDescription="TODO" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

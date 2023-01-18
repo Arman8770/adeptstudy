@@ -129,7 +129,7 @@ class UploadFile : AppCompatActivity(), PermissionListener {
             .addOnSuccessListener {
                 childReference.downloadUrl.addOnSuccessListener {
 
-                    val obj = FileInfoModel(getFN,filepath.toString())
+                    val obj = FileInfoModel(getFN,it.toString())
                     databaseReference.child(databaseReference.push().key!!).setValue(obj)
 
                     pd.dismiss()

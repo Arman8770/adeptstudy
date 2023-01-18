@@ -34,6 +34,7 @@ class Login : AppCompatActivity() {
 
         googleSignInClient = GoogleSignIn.getClient(this , gso)
 
+        signInGoogle()
         findViewById<Button>(R.id.gSignInBtn).setOnClickListener {
             signInGoogle()
         }
@@ -76,7 +77,7 @@ class Login : AppCompatActivity() {
             else if (it.isSuccessful && account.email != "ayush.adeptstudy@gmail.com"){
                 val intent = Intent(this , UserLoginSuccessful::class.java)
                 intent.putExtra("account",account)
-            startActivity(intent)
+                startActivity(intent)
             }
             else{
                 Toast.makeText(this, it.exception.toString() , Toast.LENGTH_SHORT).show()
