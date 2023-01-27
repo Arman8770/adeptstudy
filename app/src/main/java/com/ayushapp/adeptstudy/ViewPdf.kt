@@ -4,6 +4,7 @@ package com.ayushapp.adeptstudy
 
 import android.os.AsyncTask
 import android.os.Bundle
+import android.view.WindowManager
 import androidx.appcompat.app.AppCompatActivity
 import com.github.barteksc.pdfviewer.PDFView
 import java.io.BufferedInputStream
@@ -17,20 +18,19 @@ import javax.net.ssl.HttpsURLConnection
 class ViewPdf : AppCompatActivity() {
     private lateinit var pdfFileView:PDFView
     override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_view_pdf)
+            super.onCreate(savedInstanceState)
+            setContentView(R.layout.activity_view_pdf)
 
-        supportActionBar!!.hide()
+            supportActionBar!!.hide()
+            window.setFlags(WindowManager.LayoutParams.FLAG_SECURE, WindowManager.LayoutParams.FLAG_SECURE)
 
-        pdfFileView = findViewById(R.id.pdfViewByURL)
+            pdfFileView = findViewById(R.id.pdfViewByURL)
 
-        val filename: String = intent.getStringExtra("filename").toString()
-        val fileurl: String = intent.getStringExtra("fileurl").toString()
+            val filename: String = intent.getStringExtra("filename").toString()
+            val fileurl: String = intent.getStringExtra("fileurl").toString()
 
 
         RetrievePDFFromURL(pdfFileView).execute(fileurl)
-
-
     }
 
     class RetrievePDFFromURL(pdfFileView: PDFView?):

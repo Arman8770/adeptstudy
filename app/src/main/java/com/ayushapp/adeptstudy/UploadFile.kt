@@ -31,6 +31,7 @@ class UploadFile : AppCompatActivity(), PermissionListener {
     private lateinit var browseFile: ImageView
     private lateinit var cancelFile: ImageView
     private lateinit var etFileName: EditText
+    private lateinit var etDegreeLoc: EditText
     private lateinit var etFolderLocation: EditText
     private lateinit var btuploadFile: Button
     private lateinit var storageReference: StorageReference
@@ -39,6 +40,7 @@ class UploadFile : AppCompatActivity(), PermissionListener {
     private lateinit var filepath:Uri
     private lateinit var getFL:String
     private lateinit var getFN:String
+    private lateinit var getDL:String
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -52,6 +54,7 @@ class UploadFile : AppCompatActivity(), PermissionListener {
         etFileName = findViewById(R.id.fileName)
         etFolderLocation = findViewById(R.id.chooseFolder)
         btuploadFile = findViewById(R.id.uploadFile)
+        etDegreeLoc = findViewById(R.id.chooseDegree)
 
         cancelFile.visibility = View.INVISIBLE
 
@@ -69,8 +72,10 @@ class UploadFile : AppCompatActivity(), PermissionListener {
 
             getFL = etFolderLocation.text.toString()
             getFN = etFileName.text.toString()
+            getDL = etDegreeLoc.text.toString()
+
             //firebase get storage and database reference
-            storageReference = FirebaseStorage.getInstance().getReference("Upload/")
+            storageReference = FirebaseStorage.getInstance().getReference(getDL+"/")
             databaseReference = FirebaseDatabase.getInstance().getReference(getFL+"")
             uploadProcess(filepath)
         }

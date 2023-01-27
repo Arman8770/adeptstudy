@@ -15,8 +15,10 @@ import com.google.firebase.storage.UploadTask
 class CreateDirectory : AppCompatActivity() {
 
     private lateinit var etfolderName:EditText
+    private lateinit var etgetDegreeLoc:EditText
     private lateinit var btcreateFolder:Button
     private lateinit var getName:String
+    private lateinit var getDLocName:String
 
     private lateinit var storageReference: StorageReference
     private lateinit var databaseReference: DatabaseReference
@@ -26,16 +28,18 @@ class CreateDirectory : AppCompatActivity() {
 
         supportActionBar!!.title = "Create Folder"
 
+        etgetDegreeLoc = findViewById(R.id.getDegreeLoc)
         etfolderName = findViewById(R.id.folderName)
         btcreateFolder = findViewById(R.id.createButton)
 
 
         btcreateFolder.setOnClickListener{
 
+            getDLocName = etgetDegreeLoc.text.toString()
             getName = etfolderName.text.toString()
 
-            storageReference = FirebaseStorage.getInstance().getReference("Upload/")
-            databaseReference = FirebaseDatabase.getInstance().getReference("FolderLocation")
+            storageReference = FirebaseStorage.getInstance().getReference(getDLocName+"/")
+            databaseReference = FirebaseDatabase.getInstance().getReference(""+getDLocName)
 
             uploadProcess()
         }

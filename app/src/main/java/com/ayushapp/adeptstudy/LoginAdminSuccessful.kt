@@ -57,6 +57,7 @@ class LoginAdminSuccessful : AppCompatActivity(){
         val createFolder = view.findViewById<TextView>(R.id.createFolder)
         val uploadFile = view.findViewById<TextView>(R.id.uploadFile)
 
+
         createFolder.setOnClickListener {
             val intent = Intent(this,CreateDirectory::class.java)
             startActivity(intent)
@@ -65,6 +66,7 @@ class LoginAdminSuccessful : AppCompatActivity(){
             val intent = Intent(this,UploadFile::class.java)
             startActivity(intent)
         }
+
     }
 }
 

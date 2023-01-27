@@ -12,7 +12,7 @@
         tools:layout="@layout/fragment_home"/>
     <fragment
         android:id="@+id/download"
-        android:name="com.ayushapp.adeptstudy.Download"
+        android:name="com.ayushapp.adeptstudy.fragments.Download"
         android:label="fragment_download"
         tools:layout="@layout/fragment_download" />
     <fragment

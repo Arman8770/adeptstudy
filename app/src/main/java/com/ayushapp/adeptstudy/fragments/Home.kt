@@ -1,56 +1,55 @@
 package com.ayushapp.adeptstudy.fragments
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
+import android.widget.TextView
 import androidx.fragment.app.Fragment
-import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
-import com.ayushapp.adeptstudy.FolderInfoModel
-import com.ayushapp.adeptstudy.MyAdapter
+import com.ayushapp.adeptstudy.OpenGrad
 import com.ayushapp.adeptstudy.R
-import com.firebase.ui.database.FirebaseRecyclerOptions
-import com.google.firebase.database.*
 
 
 class Home : Fragment() {
 
-    private lateinit var databaseReference: DatabaseReference
-    private  lateinit var recview: RecyclerView
-    private lateinit var adapter: MyAdapter
-    private lateinit var folderArrayList: ArrayList<FolderInfoModel>
+    private lateinit var grad:TextView
+    private lateinit var postGrad:TextView
+    private lateinit var doc:TextView
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
 
         val view: View = inflater.inflate(R.layout.fragment_home, container, false)
+        grad = view.findViewById(R.id.graduation)
+        postGrad = view.findViewById(R.id.postGraduation)
+        doc = view.findViewById(R.id.doctorate)
 
-        recview = view.findViewById(R.id.recview)
-        recview.layoutManager = LinearLayoutManager(context)
-        recview.setHasFixedSize(true)
-
-        folderArrayList = arrayListOf()
-
-        databaseReference = FirebaseDatabase.getInstance().getReference("FolderLocation")
-        databaseReference.addValueEventListener(object :ValueEventListener{
-            override fun onDataChange(snapshot: DataSnapshot) {
-                if(snapshot.exists()){
-                    for (folderSnapshot in snapshot.children){
-                        val folder = folderSnapshot.getValue(FolderInfoModel::class.java)
-                        folderArrayList.add(folder!!)
-                    }
-                    recview.adapter = MyAdapter(folderArrayList)
-                }
+        grad.setOnClickListener{
+            activity?.let{
+                val intent = Intent (it, OpenGrad::class.java)
+                intent.putExtra("grad", "Graduation")
+                it.startActivity(intent)
             }
+        }
 
-            override fun onCancelled(error: DatabaseError) {
-                Toast.makeText(context, "Something wrong", Toast.LENGTH_SHORT).show()
+        postGrad.setOnClickListener{
+            activity?.let{
+                val intent = Intent (it, OpenGrad::class.java)
+                intent.putExtra("grad", "Post Graduation")
+                it.startActivity(intent)
             }
-        })
+        }
 
+        doc.setOnClickListener{
+            activity?.let{
+                val intent = Intent (it, OpenGrad::class.java)
+                intent.putExtra("grad", "Doctorate")
+                it.startActivity(intent)
+            }
+        }
         return (view)
     }
 

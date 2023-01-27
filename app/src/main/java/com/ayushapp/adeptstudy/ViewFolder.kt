@@ -1,6 +1,7 @@
 package com.ayushapp.adeptstudy
 
 import android.os.Bundle
+import android.view.WindowManager
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -8,6 +9,7 @@ import com.firebase.ui.database.FirebaseRecyclerOptions
 import com.google.firebase.database.FirebaseDatabase
 
 class ViewFolder : AppCompatActivity() {
+
 
     private var folderName: String? = null
     private lateinit var recyclerView: RecyclerView
@@ -29,7 +31,7 @@ class ViewFolder : AppCompatActivity() {
             )
             .build()
 
-        adapter = MyFolderAdapter(options)
+        adapter = MyFolderAdapter(options, folderName!!)
         recyclerView.setAdapter(adapter)
     }
 

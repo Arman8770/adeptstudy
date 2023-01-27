@@ -6,89 +6,131 @@
     android:layout_height="match_parent"
     tools:context=".UploadFile">
 
-    <ImageView
-        android:id="@+id/browseFile"
-        android:layout_width="150dp"
-        android:layout_height="170dp"
-        android:layout_marginTop="24dp"
-        android:src="@drawable/ic_cloud_upload"
-        android:clickable="true"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        android:focusable="true"/>
-
-
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/nameFile"
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="24dp"
-        android:layout_marginTop="15dp"
-        android:layout_marginEnd="24dp"
-        android:hint="File Name"
+        android:layout_height="match_parent"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/showFN">
+        app:layout_constraintTop_toTopOf="parent" >
 
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/fileName"
+
+        <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+            android:layout_height="match_parent">
 
-    </com.google.android.material.textfield.TextInputLayout>
+            <ImageView
+                android:id="@+id/browseFile"
+                android:layout_width="150dp"
+                android:layout_height="170dp"
+                android:layout_marginTop="24dp"
+                android:src="@drawable/ic_cloud_upload"
+                android:clickable="true"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                android:focusable="true"
+                android:contentDescription="TODO" />
 
 
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/choose"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="24dp"
-        android:layout_marginTop="15dp"
-        android:layout_marginEnd="24dp"
-        android:hint="Folder Location"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/nameFile">
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/nameFile"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="24dp"
+                android:layout_marginTop="15dp"
+                android:layout_marginEnd="24dp"
+                android:hint="File Name"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/showFN">
 
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/chooseFolder"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/fileName"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
 
-    </com.google.android.material.textfield.TextInputLayout>
+            </com.google.android.material.textfield.TextInputLayout>
 
-    <Button
-        android:id="@+id/uploadFile"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="24dp"
-        android:layout_marginTop="15dp"
-        android:layout_marginEnd="24dp"
-        android:text="Upload"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/choose" />
 
-    <ImageView
-        android:id="@+id/cancelFile"
-        android:layout_width="35dp"
-        android:layout_height="35dp"
-        android:clickable="true"
-        app:layout_constraintEnd_toEndOf="@+id/browseFile"
-        app:layout_constraintTop_toTopOf="@+id/browseFile"
-        app:srcCompat="@drawable/ic_cancel" />
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/choose"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="24dp"
+                android:layout_marginTop="15dp"
+                android:layout_marginEnd="24dp"
+                android:hint="Folder Location"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/nameFile">
 
-    <TextView
-        android:id="@+id/showFN"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Browse File"
-        android:textStyle="bold"
-        android:textSize="18sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/browseFile" />
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/chooseFolder"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/degLoc"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="24dp"
+                android:layout_marginTop="15dp"
+                android:layout_marginEnd="24dp"
+                android:hint="Grad Location"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/choose">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/chooseDegree"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <Button
+                android:id="@+id/uploadFile"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="24dp"
+                android:layout_marginTop="24dp"
+                android:layout_marginEnd="24dp"
+                android:text="Upload"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/degLoc" />
+
+            <ImageView
+                android:id="@+id/cancelFile"
+                android:layout_width="48dp"
+                android:layout_height="48dp"
+                android:clickable="true"
+                app:layout_constraintEnd_toEndOf="@+id/browseFile"
+                app:layout_constraintTop_toTopOf="@+id/browseFile"
+                app:srcCompat="@drawable/ic_cancel"
+                android:contentDescription="TODO" />
+
+            <TextView
+                android:id="@+id/showFN"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Browse File"
+                android:textStyle="bold"
+                android:textSize="18sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/browseFile" />
+
+
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </ScrollView>
+
+
 
 
 
