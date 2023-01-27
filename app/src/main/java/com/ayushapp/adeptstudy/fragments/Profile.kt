@@ -46,10 +46,8 @@ class Profile : Fragment() {
                 while (true) {
                     Thread.sleep(500)
                     kotlin.run { deleteAppData() }
-
                 }
             }
-
 
             auth.signOut()
 //            activity?.let{

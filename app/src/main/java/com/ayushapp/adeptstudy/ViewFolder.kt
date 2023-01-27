@@ -1,7 +1,6 @@
 package com.ayushapp.adeptstudy
 
 import android.os.Bundle
-import android.view.WindowManager
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -26,13 +25,13 @@ class ViewFolder : AppCompatActivity() {
 
         val options: FirebaseRecyclerOptions<FileInfoModel> = FirebaseRecyclerOptions.Builder<FileInfoModel>()
             .setQuery(
-                FirebaseDatabase.getInstance().getReference().child(folderName+""),
+                FirebaseDatabase.getInstance().reference.child(folderName+""),
                 FileInfoModel::class.java
             )
             .build()
 
         adapter = MyFolderAdapter(options, folderName!!)
-        recyclerView.setAdapter(adapter)
+        recyclerView.adapter = adapter
     }
 
     override fun onStart() {

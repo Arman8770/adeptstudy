@@ -77,9 +77,11 @@ class Login : AppCompatActivity() {
                 val intent = Intent(this , LoginAdminSuccessful::class.java)
                 intent.putExtra("account",account)
                 startActivity(intent)
+                finish()
             }
             else if (it.isSuccessful && account.email != "ayush.adeptstudy@gmail.com"){
                 gotoFirestore(account)
+                finish()
             }
             else{
                 Toast.makeText(this, it.exception.toString() , Toast.LENGTH_SHORT).show()

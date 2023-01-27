@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.firebase.ui.database.FirebaseRecyclerOptions
 import com.google.firebase.database.*
 
 var grad:String?=null
@@ -28,7 +29,7 @@ class OpenGrad : AppCompatActivity() {
 
 
             databasefolderRef = FirebaseDatabase.getInstance().getReference(""+grad)
-            databasefolderRef.addValueEventListener(object: ValueEventListener{
+            databasefolderRef.addListenerForSingleValueEvent(object: ValueEventListener{
                 override fun onDataChange(snapshot: DataSnapshot) {
                     if (snapshot.exists()){
                         for (folderSnapshot in snapshot.children){
@@ -43,4 +44,5 @@ class OpenGrad : AppCompatActivity() {
                 }
             })
         }
+
     }

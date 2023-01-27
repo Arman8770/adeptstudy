@@ -18,11 +18,13 @@ class MyAdapterFolderShow(private val folderShow: ArrayList<FolderInfoModel>, gr
     RecyclerView.Adapter<MyAdapterFolderShow.MyAdapterFolderShowView>() {
 
     class MyAdapterFolderShowView(itemView: View) : RecyclerView.ViewHolder(itemView){
-        val dataDeleteRef = FirebaseDatabase.getInstance()
+
 
         var folderNameshow:TextView = itemView.findViewById(R.id.folderName)
         var rlFolderTouch:RelativeLayout = itemView.findViewById(R.id.onFolderTouch)
         var imgdeleteTouch:ImageView = itemView.findViewById(R.id.deleteFolder)
+
+
 
     }
 
@@ -34,9 +36,11 @@ class MyAdapterFolderShow(private val folderShow: ArrayList<FolderInfoModel>, gr
         return MyAdapterFolderShowView(view)
     }
 
+
     override fun getItemCount(): Int {
-        return  folderShow.size
+        return folderShow.size
     }
+
 
     override fun onBindViewHolder(holder: MyAdapterFolderShowView, position: Int) {
         val currentItem = folderShow[position]
@@ -57,10 +61,11 @@ class MyAdapterFolderShow(private val folderShow: ArrayList<FolderInfoModel>, gr
 
         holder.imgdeleteTouch.setOnClickListener{
 
+
             val data=dataDeleteRef.getReference(""+gradDelete)
                 val child = data.orderByChild("foldername")
                     .equalTo(""+currentItem.foldername)
-                child.addListenerForSingleValueEvent(object :ValueEventListener{
+                child.addValueEventListener(object :ValueEventListener{
                 override fun onDataChange(snapshot: DataSnapshot) {
                     snapshot.children.forEach{
                         val change:String= it.key.toString()
@@ -75,6 +80,8 @@ class MyAdapterFolderShow(private val folderShow: ArrayList<FolderInfoModel>, gr
             val deleteRef = childStorageRef.child(currentItem.foldername+"/"+"file.txt")
             deleteRef.delete()
 
+            folderShow.removeAt(position)
+            notifyDataSetChanged()
         }
     }
 }
