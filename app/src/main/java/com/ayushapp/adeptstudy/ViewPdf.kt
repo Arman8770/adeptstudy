@@ -5,6 +5,7 @@ package com.ayushapp.adeptstudy
 import android.os.AsyncTask
 import android.os.Bundle
 import android.view.WindowManager
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.github.barteksc.pdfviewer.PDFView
 import java.io.BufferedInputStream
@@ -29,7 +30,7 @@ class ViewPdf : AppCompatActivity() {
             val filename: String = intent.getStringExtra("filename").toString()
             val fileurl: String = intent.getStringExtra("fileurl").toString()
 
-
+        Toast.makeText(this,"PDF Opening Please wait!", Toast.LENGTH_SHORT).show()
         RetrievePDFFromURL(pdfFileView).execute(fileurl)
     }
 
