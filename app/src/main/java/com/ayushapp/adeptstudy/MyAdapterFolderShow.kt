@@ -61,7 +61,6 @@ class MyAdapterFolderShow(private val folderShow: ArrayList<FolderInfoModel>, gr
 
         holder.imgdeleteTouch.setOnClickListener{
 
-
             val data=dataDeleteRef.getReference(""+gradDelete)
                 val child = data.orderByChild("foldername")
                     .equalTo(""+currentItem.foldername)
@@ -79,7 +78,6 @@ class MyAdapterFolderShow(private val folderShow: ArrayList<FolderInfoModel>, gr
             val childStorageRef = storageDelRef.getReference(grad+"/")
             val deleteRef = childStorageRef.child(currentItem.foldername+"/"+"file.txt")
             deleteRef.delete()
-
             folderShow.removeAt(position)
             notifyDataSetChanged()
         }

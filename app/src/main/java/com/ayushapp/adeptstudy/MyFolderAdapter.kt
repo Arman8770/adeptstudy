@@ -35,6 +35,11 @@ class MyFolderAdapter(options: FirebaseRecyclerOptions<FileInfoModel>, folderNam
 
     override fun onBindViewHolder(holder: MyFolderViewHolder, position: Int, model: FileInfoModel) {
         holder.pdfName.setText(model.filename)
+        if (personEmail=="ayush.adeptstudy@gmail.com"){
+            holder.imgDeleteFile.visibility = View.VISIBLE
+        }else {
+            holder.imgDeleteFile.visibility = View.INVISIBLE
+        }
 
         holder.pdftouch.setOnClickListener(){
             val intent = Intent(holder.pdftouch.context,ViewPdf::class.java)
@@ -43,7 +48,6 @@ class MyFolderAdapter(options: FirebaseRecyclerOptions<FileInfoModel>, folderNam
 
             intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
             holder.pdftouch.context.startActivity(intent)
-
 
             if (personEmail=="ayush.adeptstudy@gmail.com"){
                 holder.imgDeleteFile.visibility = View.VISIBLE
