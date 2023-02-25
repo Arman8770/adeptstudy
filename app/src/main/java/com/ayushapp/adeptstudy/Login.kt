@@ -81,7 +81,6 @@ class Login : AppCompatActivity() {
             }
             else if (it.isSuccessful && account.email != "ayush.adeptstudy@gmail.com"){
                 gotoFirestore(account)
-                finish()
             }
             else{
                 Toast.makeText(this, it.exception.toString() , Toast.LENGTH_SHORT).show()
@@ -98,6 +97,7 @@ class Login : AppCompatActivity() {
                     val intent= Intent(this,UserLoginSuccessful::class.java)
                     intent.putExtra("account", account)
                     startActivity(intent)
+                    finish()
                 }
                 else{
                     val intent= Intent(this,AdminPermission::class.java)
@@ -105,10 +105,10 @@ class Login : AppCompatActivity() {
                     startActivity(intent)
                 }
             }
-            .addOnFailureListener {
-                val intent= Intent(this,AdminPermission::class.java)
-                intent.putExtra("account", account)
-                startActivity(intent)
-            }
+//            .addOnFailureListener {
+//                val intent= Intent(this,AdminPermission::class.java)
+//                intent.putExtra("account", account)
+//                startActivity(intent)
+//            }
     }
 }

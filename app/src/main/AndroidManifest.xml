@@ -19,9 +19,6 @@
         android:theme="@style/Theme.AdeptStudy"
         tools:targetApi="31">
         <activity
-            android:name=".DeleteFile"
-            android:exported="false" />
-        <activity
             android:name=".OpenGrad"
             android:exported="false" />
         <activity
